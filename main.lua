@@ -1,4 +1,4 @@
--- BUILD 2229_11_06_2024
+-- BUILD 2246_11_06_2024
 
 -- Crafting Schematics
 -- format: variable_name = {"item_being_crafted", "key_id_item", "base_item", "component_1", "component_2", ...}
@@ -60,7 +60,6 @@ end
 -- Periodically check if key items appear in inventory
 
 while true do
-    local break_loop = false
     for item = 1, 16 do
         
         -- Checks every slot for key item
@@ -72,15 +71,11 @@ while true do
             for i = 1, #schematics do
                 if (item_details.name == schematics[i][2]) then
                     if(craft(schematics[i])) then
-                        break_loop = true
+                        item = 1
                         break
                     end
                 end
             end
-        end
-        -- goto label doesn't work so we have to do it manually
-        if break_loop then
-            break
         end
     end
 
