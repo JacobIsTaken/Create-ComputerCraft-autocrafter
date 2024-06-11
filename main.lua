@@ -1,4 +1,4 @@
--- BUILD 2028_11_06_2024
+-- BUILD 2035_11_06_2024
 
 -- Crafting Schematics
 -- format: variable_name = {"item_being_crafted", "key_id_item", "base_item", "component_1", "component_2", ...}
@@ -70,6 +70,7 @@ while true do
                 if (item_details.name == schematics[i][2]) then
                     if(craft(schematics[i])) then
                         break_loop = true
+                        break
                     end
                 end
             end
