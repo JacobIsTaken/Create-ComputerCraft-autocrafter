@@ -60,6 +60,8 @@ end
 -- Periodically check if key items appear in inventory
 
 while true do
+    -- Used to restart the loop if the item is crafted and look from first slot
+    local break_loop = false
     for item = 1, 16 do
         
         -- Checks every slot for key item
@@ -71,10 +73,13 @@ while true do
             for i = 1, #schematics do
                 if (item_details.name == schematics[i][2]) then
                     if(craft(schematics[i])) then
-                        item = 1
+                        break_loop = true
                         break
                     end
                 end
+            end
+            if break_loop then
+                break
             end
         end
     end
