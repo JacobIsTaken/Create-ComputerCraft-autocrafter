@@ -1,4 +1,4 @@
--- BUILD 2019_11_06_2024
+-- BUILD 2028_11_06_2024
 
 -- Crafting Schematics
 -- format: variable_name = {"item_being_crafted", "key_id_item", "base_item", "component_1", "component_2", ...}
@@ -49,12 +49,15 @@ local function craft(name)
     end
     -- go back to normal position
     turtle.turnRight()
+    print("Crafted ".. name[1])
+    return true
 end
 
 -- Main Loop
 -- Periodically check if key items appear in inventory
 
 while true do
+    local break_loop = false
     for item = 1, 16 do
         
         -- Checks every slot for key item
@@ -65,13 +68,17 @@ while true do
             -- Checks if key item is in the list of schematics
             for i = 1, #schematics do
                 if (item_details.name == schematics[i][2]) then
-                    craft(schematics[i])
-                    goto crafted
+                    if(craft(schematics[i])) then
+                        break_loop = true
+                    end
                 end
             end
         end
+        -- goto label doesn't work so we have to do it manually
+        if break_loop then
+            break
+        end
     end
-    ::crafted::
 
     -- No item found
     print("No key item found")
