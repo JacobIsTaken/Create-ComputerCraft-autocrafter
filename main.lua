@@ -1,4 +1,4 @@
--- BUILD 2111_11_06_2024
+-- BUILD 2229_11_06_2024
 
 -- Crafting Schematics
 -- format: variable_name = {"item_being_crafted", "key_id_item", "base_item", "component_1", "component_2", ...}
@@ -17,16 +17,19 @@ local schematics = {
 
 -- Crafting Functions
 local function find_item_slot(item_name)
-    for slot = 1, 16 do
-        turtle.select(slot)
-        if (turtle.getItemDetail(slot)~= nil) then
-            if (turtle.getItemDetail(slot).name == item_name) then
-                return slot
+    while true do
+        for slot = 1, 16 do
+            turtle.select(slot)
+            if (turtle.getItemDetail(slot)~= nil) then
+                if (turtle.getItemDetail(slot).name == item_name) then
+                    return slot
+                end
             end
         end
+        printError("ERROR: Item '" ..item_name.. "' not found in inventory")
+        printError("Checking again in 5 seconds.")
+        os.sleep(5)
     end
-    printError("ERROR: Item '" ..item_name.. "' not found in inventory")
-    return nil
 end
 
 local function craft(name)
@@ -47,10 +50,11 @@ local function craft(name)
         turtle.drop(1)
     end
     -- go back to normal position
-    turtle.turnRight()
+    turtle.turnLeft()
     print("Crafted ".. name[1])
     return true
 end
+
 
 -- Main Loop
 -- Periodically check if key items appear in inventory
@@ -81,6 +85,6 @@ while true do
     end
 
     -- No item found
-    print("No key item found")
-    os.sleep(5)
+    print("No key item found, waiting")
+    os.sleep(10)
 end
