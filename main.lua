@@ -1,4 +1,4 @@
--- BUILD 1941_11_06_2024
+-- BUILD 1948_11_06_2024
 
 -- Crafting Schematics
 -- format: variable_name = {"item_being_crafted", "key_id_item", "base_item", "component_1", "component_2", ...}
@@ -29,15 +29,18 @@ local function craft(name)
     print("Crafting ".. name[1])
     -- drop key id item
     os.sleep(0.5)
-    turtle.drop(find_item_slot(name[2]))
+    turtle.select(find_item_slot(name[2]))
+    turtle.drop(1)
     -- drop base item
     turtle.turnRight()
     os.sleep(0.5)
-    turtle.dropDown(find_item_slot(name[3]))
+    turtle.select(find_item_slot(name[3]))
+    turtle.dropDown(1)
     -- drop components
     for i = 4, #name do
         os.sleep(1)
-        turtle.drop(find_item_slot(name[i]))
+        turtle.select(find_item_slot(name[i]))
+        turtle.drop(1)
     end
     -- go back to normal position
     turtle.turnRight()
