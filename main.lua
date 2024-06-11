@@ -54,7 +54,7 @@ while true do
 
             -- Checks if key item is in the list of schematics
             for i = 1, #schematics do
-                if (item.name == schematics[i][1]) then
+                if (item_details.name == schematics[i][1]) then
                     craft(schematics[i])
                     break
                 end
