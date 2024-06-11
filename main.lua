@@ -1,4 +1,4 @@
--- BUILD 2043_11_06_2024
+-- BUILD 2111_11_06_2024
 
 -- Crafting Schematics
 -- format: variable_name = {"item_being_crafted", "key_id_item", "base_item", "component_1", "component_2", ...}
@@ -7,7 +7,7 @@ local precision_mechanism = {"create:precision_mechanism", "chisel:antiblock/whi
 -- Cogwheel
 local cogwheel = {"create:cogwheel", "chisel:antiblock/orange", "create:andesite_alloy", "tconstruct:large_plate", "minecraft:acacia_button", "tconstruct:large_plate", "minecraft:acacia_button", "tconstruct:large_plate", "minecraft:acacia_button", "tconstruct:large_plate", "minecraft:acacia_button"}
 -- Large Cogwheel
-local large_cogwheel = {"create:large_cogwheel", "chisel:antiblock/magenta", "create:andesite_alloy", "minecraft:acacia_planks", "minecraft:acacia_button", "minecraft:acacia_planks", "minecraft:acacia_button", "minecraft:acacia_planks", "minecraft:acacia_button", "minecraft:acacia_planks", "minecraft:acacia_button"}
+local large_cogwheel = {"create:large_cogwheel", "chisel:antiblock/magenta", "create:andesite_alloy", "minecraft:acacia_planks", "tconstruct:large_plate", "minecraft:acacia_planks", "tconstruct:large_plate", "minecraft:acacia_planks", "tconstruct:large_plate", "minecraft:acacia_planks", "tconstruct:large_plate"}
 
 local schematics = {
     precision_mechanism, 
@@ -25,7 +25,7 @@ local function find_item_slot(item_name)
             end
         end
     end
-    printError("Item " ..item_name.. " not found in inventory")
+    printError("ERROR: Item '" ..item_name.. "' not found in inventory")
     return nil
 end
 
