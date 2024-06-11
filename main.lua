@@ -1,3 +1,5 @@
+-- BUILD 1931_11_06_2024
+
 -- Crafting Schematics
 -- format: name = {"key_id_item", "base_item", "component_1", "component_2", ...}
 -- Precision Mechanism ID
@@ -65,6 +67,3 @@ while true do
     print("No key item found")
     os.sleep(5)
 end
-
-
-
