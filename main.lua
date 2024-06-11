@@ -1,4 +1,4 @@
--- BUILD 2246_11_06_2024
+-- BUILD 0049_12_06_2024
 
 -- Crafting Schematics
 -- format: variable_name = {"item_being_crafted", "key_id_item", "base_item", "component_1", "component_2", ...}
@@ -83,7 +83,7 @@ while true do
             end
         end
     end
-    if break_loop then
+    if not break_loop then
         -- No item found
         print("No key item found, waiting")
         os.sleep(10)
