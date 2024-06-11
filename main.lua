@@ -24,6 +24,7 @@ local function find_item_slot(item_name)
 end
 
 local function craft(name)
+    print("Crafting ".. name)
     -- drop key id item
     os.sleep(0.5)
     turtle.drop(find_item_slot(name[1]))
@@ -44,26 +45,24 @@ end
 -- Periodically check if key items appear in inventory
 
 while true do
-    local item_exists = turtle.getItemDetail(1)
-    if (item_exists) then
+    for item = 1, 16 do
         
-        -- Check inventory for key item
-        for item = 1, 16 do
-            local item_detail = turtle.getItemDetail(item)
+        -- Checks every slot for key item
+        turtle.select(item)
+        if (turtle.getItemDetail(item)~= nil) then
+            local item_details = turtle.getItemDetail(item)
 
-            if (item_detail.name == "chisel:antiblock/white") then
-                craft(precision_mechanism)    
-            elseif (item_detail.name == "chisel:antiblock/orange") then
-                craft(cogwheel)    
-            elseif (item_detail.name == "chisel:antiblock/magenta") then
-                craft(large_cogwheel)    
-            else
-                printError("Unknown item found in inventory: ".. item_detail.name)    
-            end    
-        end    
+            -- Checks if key item is in the list of schematics
+            for i = 1, #schematics do
+                if (item.name == schematics[i][1]) then
+                    craft(schematics[i])
+                    break
+                end
+            end
+        end
     end
-
     -- No item found
+    print("No key item found")
     os.sleep(5)
 end
 
