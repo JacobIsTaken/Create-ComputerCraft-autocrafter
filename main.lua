@@ -1,4 +1,4 @@
--- BUILD 2002_11_06_2024
+-- BUILD 2019_11_06_2024
 
 -- Crafting Schematics
 -- format: variable_name = {"item_being_crafted", "key_id_item", "base_item", "component_1", "component_2", ...}
@@ -24,6 +24,7 @@ local function find_item_slot(item_name)
                 return slot
             else
                 printError("Item " ..item_name.. " not found in inventory")
+                return nil
             end
         end
     end
@@ -65,11 +66,13 @@ while true do
             for i = 1, #schematics do
                 if (item_details.name == schematics[i][2]) then
                     craft(schematics[i])
-                    break
+                    goto crafted
                 end
             end
         end
     end
+    ::crafted::
+
     -- No item found
     print("No key item found")
     os.sleep(5)
