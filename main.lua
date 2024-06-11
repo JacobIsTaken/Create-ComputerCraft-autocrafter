@@ -83,8 +83,9 @@ while true do
             end
         end
     end
-
-    -- No item found
-    print("No key item found, waiting")
-    os.sleep(10)
+    if break_loop then
+        -- No item found
+        print("No key item found, waiting")
+        os.sleep(10)
+    end
 end
