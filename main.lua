@@ -1,4 +1,4 @@
--- BUILD 1959_11_06_2024
+-- BUILD 2002_11_06_2024
 
 -- Crafting Schematics
 -- format: variable_name = {"item_being_crafted", "key_id_item", "base_item", "component_1", "component_2", ...}
@@ -22,9 +22,10 @@ local function find_item_slot(item_name)
         if (turtle.getItemDetail(slot)~= nil) then
             if (turtle.getItemDetail(slot).name == item_name) then
                 return slot
+            else
+                printError("Item " ..item_name.. " not found in inventory")
             end
         end
-        print("Item " ..item_name.. " not found in inventory")
     end
 end
 
