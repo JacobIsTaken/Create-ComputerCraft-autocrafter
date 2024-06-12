@@ -1,19 +1,7 @@
 -- BUILD 0049_12_06_2024
 
--- Crafting Schematics
--- format: variable_name = {"item_being_crafted", "key_id_item", "base_item", "component_1", "component_2", ...}
--- Precision Mechanism ID
-local precision_mechanism = {"create:precision_mechanism", "chisel:antiblock/white", "emendatusenigmatica:gold_plate", "create:cogwheel", "create:large_cogwheel", "minecraft:iron_nugget", "create:cogwheel", "create:large_cogwheel", "minecraft:iron_nugget", "create:cogwheel", "create:large_cogwheel", "minecraft:iron_nugget", "create:cogwheel", "create:large_cogwheel", "minecraft:iron_nugget", "create:cogwheel", "create:large_cogwheel", "minecraft:iron_nugget"}
--- Cogwheel
-local cogwheel = {"create:cogwheel", "chisel:antiblock/orange", "create:andesite_alloy", "tconstruct:large_plate", "minecraft:acacia_button", "tconstruct:large_plate", "minecraft:acacia_button", "tconstruct:large_plate", "minecraft:acacia_button", "tconstruct:large_plate", "minecraft:acacia_button"}
--- Large Cogwheel
-local large_cogwheel = {"create:large_cogwheel", "chisel:antiblock/magenta", "create:andesite_alloy", "minecraft:acacia_planks", "tconstruct:large_plate", "minecraft:acacia_planks", "tconstruct:large_plate", "minecraft:acacia_planks", "tconstruct:large_plate", "minecraft:acacia_planks", "tconstruct:large_plate"}
-
-local schematics = {
-    precision_mechanism, 
-    cogwheel, 
-    large_cogwheel
-}
+-- Crafting Recipes
+require("recipes.lua")
 
 -- Crafting Functions
 local function find_item_slot(item_name)
@@ -69,10 +57,10 @@ while true do
         if (turtle.getItemDetail(item)~= nil) then
             local item_details = turtle.getItemDetail(item)
 
-            -- Checks if key item is in the list of schematics
-            for i = 1, #schematics do
-                if (item_details.name == schematics[i][2]) then
-                    if(craft(schematics[i])) then
+            -- Checks if key item is in the list of recipes
+            for i = 1, #recipes do
+                if (item_details.name == recipes[i][2]) then
+                    if(craft(recipes[i])) then
                         break_loop = true
                         break
                     end

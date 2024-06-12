@@ -3,7 +3,8 @@
         "fs",
         "http",
         "turtle",
-        "printError"
+        "printError",
+        "shell"
     ],
     "Lua.diagnostics.disable": [
         "undefined-field"

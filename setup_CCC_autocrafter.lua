@@ -1,8 +1,12 @@
 -- Defining URLs from the repository
-local main_url = "https://raw.githubusercontent.com/JacobIsTaken/turtle-create-autocrafter/main/main.lua"
+local main_url = "https://raw.githubusercontent.com/JacobIsTaken/Create-ComputerCraft-autocrafter/main/main.lua"
+local startup_url = "https://raw.githubusercontent.com/JacobIsTaken/Create-ComputerCraft-autocrafter/main/startup.lua"
+local recipes_url = "https://raw.githubusercontent.com/JacobIsTaken/Create-ComputerCraft-autocrafter/main/recipes.lua"
 
 -- Define the local paths where the files should be saved
 local main_path = "main"
+local startup_path = "startup"
+local recipes_path = "recipes"
 
 -- Function to check if a file exists and read its content
 local function readFile(path)
@@ -40,3 +44,5 @@ end
 
 -- Download the files
 downloadFile(main_url, main_path)
+downloadFile(startup_url, startup_path)
+downloadFile(recipes_url, recipes_path)
