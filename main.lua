@@ -1,7 +1,7 @@
 -- BUILD 0049_12_06_2024
 
 -- Crafting Recipes
-require("recipes.lua")
+local recipes = require("recipes")
 
 -- Crafting Functions
 local function find_item_slot(item_name)

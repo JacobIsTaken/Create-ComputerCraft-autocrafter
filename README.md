@@ -7,14 +7,17 @@ This project provides an automated solution for crafting precision mechanisms an
 ### Installation
 
 1. Download the script onto your turtle by running:
+
    ```lua
    pastebin get gAeMvgjW download_script.lua
    ```
+
 2. Run the script
 
 ### Usage
 
 1. Proposed crafting setup:
+TO:DO
 
 ### Important Notes
 

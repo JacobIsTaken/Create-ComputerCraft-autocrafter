@@ -18,3 +18,5 @@ local recipes = {
     cogwheel, 
     large_cogwheel
 }
+
+return recipes
